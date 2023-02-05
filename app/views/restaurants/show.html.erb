@@ -1,16 +1,45 @@
-<h2><%= @restaurant.name%></h2>
-<p><strong>Address:</strong> <%=@restaurant.address%></p>
-<p><strong>Phone number:</strong> <%=@restaurant.phone_number%></p>
-<p><strong>Category:</strong> <%=@restaurant.category.capitalize%></p>
+<div class="container my-3">
+  <div class="row col-sm-12 col-lg-6">
+    <div class="heading">
+    <h2><%= @restaurant.name%></h2>
+        <%= link_to(restaurants_path, class: 'return') do %>
+          <i class="fa-solid fa-rotate-left"></i>
+          <p>Go back</p>
+        <% end %>
+      </div>
+    <div class="restaurant-info my-3 p-3">
+      <div class="restaurant-detail">
+        <i class="fa-solid fa-location-dot text-primary"></i>
+        <p><strong>Address:</strong> <%=@restaurant.address%></p>
+      </div>
+      <div class="restaurant-detail">
+        <i class="fa-solid fa-phone text-primary"></i>
+        <p><strong>Phone number:</strong> <%=@restaurant.phone_number%></p>
+      </div>
+      <div class="restaurant-detail">
+        <i class="fa-solid fa-utensils text-primary"></i></i>
+        <p><strong>Category:</strong> <%=@restaurant.category.capitalize%></p>
+      </div>
+    </div>
 
-<%= link_to('Add a review', create_review_path)%>
+    <h3>Reviews</h3>
+    <ul class="list-group">
+      <% @restaurant.reviews.each do |review| %>
+        <li class="list-group-item p-3">
+          <p><strong>Rating: </strong><%= review.rating %></p>
+          <p><%= review.content %></p>
+        </li>
+      <% end %>
+    </ul>
 
-<h3>Reviews</h3>
-<ul class="list-group">
-  <% @restaurant.reviews.each do |review| %>
-    <li class="list-group-item">
-      <p><%= "Rating: #{review.rating}" %></p>
-      <p> <%= "Content: #{review.content}" %></p>
-    </li>
-  <% end %>
-</ul>
+     <div class="review-form my-3">
+      <h3>Add a review for <%= @restaurant.name %></h3>
+      <%= simple_form_for [@restaurant, @review] do |f| %>
+        <%= f.input :rating, collection: 0..5 %>
+        <%= f.input :content, as: :text %>
+        <%= f.submit "Add review", class: "btn btn-primary" %>
+      <% end %>
+  </div>
+
+  </div>
+</div>

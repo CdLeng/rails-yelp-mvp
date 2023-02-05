@@ -1,7 +1,22 @@
-<h2>Restaurants</h2>
-<ul>
-  <% @restaurants.each do |restaurant| %>
-    <li><%= link_to(restaurant.name, show_restaurant_path(restaurant)) %></li>
-  <% end %>
-</ul>
-<%= link_to('Add a restaurant', create_restaurant_path)%>
+<div class="container">
+  <div class="row">
+    <h2>Restaurants</h2>
+    <div class="restaurants">
+      <% @restaurants.each do |restaurant| %>
+        <%= link_to(restaurant_path(restaurant)) do %>
+          <div class="restaurant-item">
+            <div class="restaurant-img">
+              <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="">
+            </div>
+            <div class="restaurant-item-info">
+              <h4><%= restaurant.name %></h4>
+              <p><%= restaurant.address %></p>
+              <p><%= restaurant.category.capitalize %></p>
+              <p><%= restaurant.reviews.count %> reviews</p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

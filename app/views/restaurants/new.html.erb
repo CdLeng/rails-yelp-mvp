@@ -1,6 +1,12 @@
 <div class="container my-3">
   <div class="row col-sm-12 col-lg-6">
+  <div class="heading">
     <h2>Add a new restaurant</h2>
+    <%= link_to(restaurants_path, class: 'return') do %>
+      <i class="fa-solid fa-rotate-left"></i>
+      <p>Go back</p>
+    <% end %>
+  </div>
     <%= render 'form', restaurant: @restaurant%>
   </div>
 </div>
