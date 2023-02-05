@@ -10,6 +10,5 @@ Rails.application.routes.draw do
   get 'restaurants/new', to: 'restaurants#new', as: :create_restaurant
   post 'restaurants', to: 'restaurants#create'
   get 'restaurants/:id', to: 'restaurants#show', as: :show_restaurant
-  get 'restaurants/:id/reviews/new', to: 'reviews#new', as: :create_review
   post 'restaurants/:id/reviews', to: 'reviews#create', as: :review
 end
