@@ -33,10 +33,11 @@
   gap: 10px;
 }
 
-.restaurants {
+.row .restaurants {
   display: flex;
   flex-direction: column;
   text-decoration: none;
+  max-width: 50%;
 }
 
 .restaurant-item {
@@ -44,12 +45,12 @@
   margin-top: 10px;
   gap: 10px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  max-width: 700px;
   text-decoration: none;
 }
 
 .restaurants a {
   text-decoration: none;
+  color: rgb(48, 48, 48);
 }
 
 .restaurant-item img {
